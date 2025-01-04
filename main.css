@@ -1,0 +1,177 @@
+/* .inter-<uniquifier> {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  } */
+
+body {
+    background-color: #F6EFDD;
+}
+
+
+.logo-site {
+    height: 150px;
+    margin-bottom: 0px;
+    position: relative;
+    /* Ensures the #logo-site-img is positioned relative to this container */
+}
+
+#logo-site-img {
+    margin-left: 0;
+    /* Removes unnecessary horizontal margin */
+    object-position: bottom left;
+    /* Aligns the content of the image to the bottom-left */
+    position: absolute;
+    /* Allows precise positioning within the .logo-site container */
+    bottom: 10px;
+    /* Aligns the image to the bottom */
+    left: 45px;
+    /* Aligns the image to the left */
+}
+
+hr.line-under-logo {
+    display: block;
+    /* width: 95%; */
+    /* height: 10px; */
+    /* border: 0; */
+    border-top: 2px solid #000000;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    /* padding: 30px; */
+}
+
+.sidebar {
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    z-index: 1;
+    top: 172px;
+    left: 50px;
+    overflow-x: hidden; /* Prevents horizontal overflow */
+    padding-top: 0px;
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;/* Stack content vertically */
+    justify-content: top;
+    position: absolute;
+}
+
+.sidebar-header {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin-top: 30px;
+    text-align: centre;
+}
+
+.sidebar-vertical-line {
+    border-left: 2px solid rgb(0, 0, 0);
+    height: 100%;
+    position: absolute;/* Position relative to the sidebar */
+    right: 0;
+    top: 0;
+}
+
+.display-body {
+    margin-left: 450px;
+    padding-left: 50px;
+}
+
+
+.body-header {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.image-title-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.title-container {
+    margin: 1px 0 0;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.add-button {
+    position: absolute;
+    width: 40px;
+    background-color: #ececec7e;
+    border: none;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.remove-button {
+    position: absolute;
+    width: 40px;
+    background-color: #ececec7e;
+    border: none;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.cross-button {
+    position: absolute;
+    width: 10px;
+    background-color: #ececec7e;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* 
+.search{
+    --padding: 14px;
+
+    margin: 300px auto auto auto;
+    width: 50%;
+    display: flex;
+    align-items: centre;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: rgb(228, 241, 245);
+    transition: background 0.25s;
+}
+
+.search:focus-within{
+    background:rgb(213, 236, 243);
+    outline-style: ridge;
+    outline-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.search-input{
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    margin-left: var(--padding);
+    margin-right: var(--padding);
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 300px;
+}
+
+.search-input::placeholder{
+    color: rgba(0, 0, 0, .25);
+} */
