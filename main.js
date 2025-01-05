@@ -36,7 +36,7 @@ async function filterOutPeople(movies) {
     if (movie.media_type !== 'person') {
       await makeTitleCard(movie);
     } else {
-      console.log('This is a person not a movie/TV show')
+      console.log('This is a person not a movie/TV show');
     }
   }
 }
@@ -64,21 +64,89 @@ async function watchProvidersApi(movie) {
     })
     providers = await reqSeries.json();
   }
-  console.log(providers);
-  return streamSites(providers);
+  console.log('Providers info: ', providers);
+  return streamLogoPath(providers);
+  // return {
+  //   currentStreamsOnly: () => currentStreamsOnly(providers),
+  //   streamLogoPath: () => streamLogoPath(providers),
+  // };
 }
 
+//NOT IN USE ANYMORE - streaming providers indicated by logos now
 //stating only the current stream providers
-function streamSites(providers) {
+// function currentStreamsOnly(providers) {
+//   let flatrate = providers.results.GB?.flatrate;
+//   let currentStreamProviders = [];
+//   if (flatrate && flatrate.length > 0) {
+//     currentStreamProviders = flatrate.map(providers => providers.provider_name);
+//   } else {
+//     currentStreamProviders = 'None'
+//   }
+//   console.log(currentStreamProviders);
+//   return currentStreamProviders;
+// }
+
+//create streaming provider container
+//replaced with logos
+// function streamProviderContainer(provider) {
+//   const providerContainer = document.createElement('div');
+//   providerContainer.classList.add('provider-container');
+
+//   const providerSites = document.createElement('p');
+//   providerSites.textContent = provider;
+//   providerContainer.appendChild(providerSites);
+//   return providerContainer;
+// }
+
+//logo path for stream provider
+function streamLogoPath(providers) {
   let flatrate = providers.results.GB?.flatrate;
-  let streamProvider = [];
+  let streamProviderLogoPaths = [];
+
   if (flatrate && flatrate.length > 0) {
-    streamProvider = flatrate.map(providers => providers.provider_name);
+    streamProviderLogoPaths = flatrate.map(providers => providers.logo_path);
   } else {
-    streamProvider = 'None'
+    console.log('No provider logo path.')
   }
-  console.log(streamProvider);
-  return streamProvider;
+  console.log(streamProviderLogoPaths);
+  return streamLogoURL(streamProviderLogoPaths);
+}
+// make logo URL
+function streamLogoURL(streamProviderLogoPaths) {
+  if (streamProviderLogoPaths && streamProviderLogoPaths.length > 0) {
+    // Map each providerLogoPath to a complete URL
+    let logoImgUrls = streamProviderLogoPaths.map(
+      (providerLogoPath) => `https://image.tmdb.org/t/p/w45${providerLogoPath}`
+    );
+    // Log the generated URLs (optional)
+    console.log('Generated Logo URLs:', logoImgUrls);
+    // Return the array of complete URLs
+    return logoImgUrls;
+  } else {
+    console.log('No logos available.');
+    return []; // Return an empty array if no logos are found
+  }
+}
+
+//create streaming provider logo container
+function createLogoContainer(logoUrl) {
+  const providerLogoContainer = document.createElement('div');
+  providerLogoContainer.classList.add('provider-container');
+
+  const providerLogoSites = document.createElement('img');
+  providerLogoSites.src = logoUrl;
+  providerLogoContainer.appendChild(providerLogoSites);
+  return providerLogoContainer;
+}
+
+function createNoneLogoContainer(noneStatement){
+  const noneLogoContainer = document.createElement('div');
+  noneLogoContainer.classList.add('none-provider-container');
+
+  const noneText = document.createElement('p');
+  noneText.textContent = noneStatement;
+  noneLogoContainer.appendChild(noneText);
+  return noneLogoContainer;
 }
 
 
@@ -100,13 +168,27 @@ async function makeTitleCard(movie) {
 
   addMovietoWatchlist(title, id, wrapper);
 
-  //providers
-  let provider = await watchProvidersApi(movie);
-  const providerContainer = streamProviderContainer(provider);
-
   wrapper.appendChild(imageContainer);
   wrapper.appendChild(titleContainer);
-  wrapper.appendChild(providerContainer);
+ 
+  //provider logos
+  try {
+    let logoImgUrls = await watchProvidersApi(movie);
+    console.log('These logos will be listed: ', logoImgUrls);
+    if (logoImgUrls && logoImgUrls.length > 0) {
+      logoImgUrls.forEach((logoURL) => {
+        let logoContainer = createLogoContainer(logoURL);
+        wrapper.appendChild(logoContainer); 
+      });
+    } else {
+      console.log('No provider logos found.');
+      let noneStatement = 'Not currently streaming in the UK';
+      let noneStatementContainer = createNoneLogoContainer(noneStatement);
+      wrapper.appendChild(noneStatementContainer);
+    } 
+  } catch (error) {
+    console.error('Error fetching provider data:', error);
+  }
 
   imageTitleContainer.appendChild(wrapper);
 }
@@ -142,18 +224,6 @@ function createTitleContainer(title) {
   titleText.textContent = title;
   titleContainer.appendChild(titleText);
   return titleContainer;
-}
-
-
-//create streaming provider container
-function streamProviderContainer(provider) {
-  const providerContainer = document.createElement('div');
-  providerContainer.classList.add('provider-container');
-
-  const providerSites = document.createElement('p');
-  providerSites.textContent = provider;
-  providerContainer.appendChild(providerSites);
-  return providerContainer;
 }
 
 
