@@ -3,6 +3,8 @@ const apiKey = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDlkMWNmNzVmYjI2ZjljNzQ4
 const watchlistAdd = document.getElementById('watchlist-list');
 
 
+filterButtonsWrapper();
+
 //use input to search api
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -303,7 +305,7 @@ function sidebarCrossButton(title, id, wrapper, sidebarWrapper) {
   const crossButton = document.createElement('button');
   crossButton.classList.add('material-symbols-outlined');
   crossButton.classList.add('cross-button');
-  crossButton.textContent = 'close'
+  crossButton.textContent = 'close';
 
   sidebarWrapper.appendChild(crossButton);
 
@@ -314,3 +316,27 @@ function sidebarCrossButton(title, id, wrapper, sidebarWrapper) {
   })
 }
 
+function filterButtonsWrapper() {
+  const mediaFilter = document.querySelector('.media-type-filter-buttons'); 
+
+  const mediaFilterWrapper = document.createElement('div');
+  mediaFilterWrapper.classList.add('wrapper');
+
+  const movieButton = document.createElement('button');
+  movieButton.classList.add('movie-filter-button');
+  movieButton.textContent = 'Movie';
+
+  const tvButton = document.createElement('button');
+  tvButton.classList.add('tv-filter-button');
+  tvButton.textContent = 'TV';
+
+  const bothButton = document.createElement('button');
+  bothButton.classList.add('both-filter-button');
+  bothButton.textContent = 'Both';
+
+  mediaFilterWrapper.appendChild(movieButton);
+  mediaFilterWrapper.appendChild(tvButton);
+  mediaFilterWrapper.appendChild(bothButton);
+
+  mediaFilter.appendChild(mediaFilterWrapper);
+}

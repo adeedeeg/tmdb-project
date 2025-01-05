@@ -144,3 +144,132 @@ hr.line-under-logo {
     padding: 10px;
     box-shadow: 5px 10px red;
 } */
+
+.media-type-filter-buttons {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .wrapper {
+    display: flex; 
+    flex-direction: row; 
+    gap: 0; 
+  }
+  
+  .wrapper button {
+    flex: 1; 
+    padding: 10px 20px; 
+    border: none; 
+    background-color: #F6EFDD; 
+    color: #000000; 
+    font-size: 16px; 
+    font-weight: normal; 
+    text-align: center; 
+    cursor: pointer; 
+    position: relative; 
+    outline: none; 
+  }
+  
+  .wrapper button:not(:last-child)::after {
+    content: ''; /* Adds a visual divider */
+    position: absolute; /* Positions the divider relative to the button */
+    top: 10%; 
+    right: 0; 
+    width: 2px; 
+    height: 80%; 
+    background-color: #000000; 
+  }
+  
+
+.display-body.line-under-searchbar{
+    display: block;
+    /* width: 95%; */
+    /* height: 10px; */
+    /* border: 0; */
+    border-top: 2px solid #000000;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    /* padding: 30px; */
+}
+
+.search-filter-bar {
+    display: flex; /* Flexbox layout for horizontal alignment */
+    justify-content: space-between; /* Space between search bar and buttons */
+    align-items: center; /* Aligns items vertically */
+    padding: 10px 20px; /* Adds spacing inside the container */
+    background-color: #F6EFDD; /* Light beige background color */
+    border-bottom: 2px solid #000; /* Bottom border to separate section */
+  }
+  
+  /* Styles for the search bar */
+  .search-bar {
+    display: flex; /* Horizontal alignment of input and button */
+    flex: 1; /* Allows search bar to grow */
+    max-width: 600px; /* Optional: limit the search bar width */
+  }
+  
+  .search-input {
+    flex: 1; /* Ensures input grows to fill space */
+    padding: 10px 15px; /* Adds padding inside the input */
+    border: 1px solid #ddd; /* Light gray border for the input */
+    border-radius: 20px 0 0 20px; /* Rounded left corners */
+    outline: none; /* Removes default focus outline */
+    font-size: 16px; /* Larger font size for better readability */
+    background-color: #fcf9f5; /* Light background color */
+  }
+  
+  .search {
+    background: none; /* Removes default styling */
+    border: none; /* Removes border */
+    color: #e25822; /* Reddish color for icon */
+    font-size: 20px; /* Adjust size for better visibility */
+    padding: 0 15px; /* Adds spacing inside the button */
+    border-radius: 0 20px 20px 0; /* Rounded right corners */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  /* Media filter buttons wrapper */
+  .media-type-filter-buttons {
+    display: flex; /* Ensures buttons align horizontally */
+    align-items: center; /* Vertical alignment */
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .wrapper {
+    display: flex; /* Flexbox layout for buttons */
+    gap: 0; /* No gap so dividers are seamless */
+  }
+  
+  .wrapper button {
+    padding: 10px 15px; /* Adds padding for better appearance */
+    border: none; /* Removes default border */
+    background: none; /* Transparent background */
+    color: #000; /* Default text color */
+    font-size: 16px; /* Font size for visibility */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Centers text */
+    position: relative; /* Enables positioning for dividers */
+  }
+  
+  .wrapper button:hover {
+    color: #e25822; /* Reddish color on hover */
+  }
+  
+  /* Active button style */
+  .wrapper button.active {
+    color: #e25822; /* Reddish color for active button */
+    font-weight: bold; /* Optional: bold text for active button */
+  }
+  
+  /* Divider between buttons */
+  .wrapper button:not(:last-child)::after {
+    content: ''; /* Adds a divider */
+    position: absolute; /* Positions it relative to the button */
+    top: 20%; /* Starts slightly below the top */
+    right: 0; /* Aligns divider to the right */
+    width: 1px; /* Thin vertical line */
+    height: 60%; /* Shorter than full height */
+    background-color: #000; /* Black color for divider */
+  }
