@@ -43,6 +43,60 @@ async function filterOutPeople(movies) {
   }
 }
 
+function extractMediaType(movie){
+  if (movie.media_type === 'movie'){
+    return 'Movie';
+  }else{
+    return 'Tv Series';
+  }
+}
+
+function createMediaTypeContainer(mediaType){
+  const mediaTypeContainer = document.createElement('div');
+  mediaTypeContainer.classList.add('media-type-container');
+
+  const mediaTypeText = document.createElement('p');
+  mediaTypeText.textContent = mediaType;
+  mediaTypeContainer.appendChild(mediaTypeText);
+
+  return mediaTypeContainer;
+}
+
+
+function extractRatings(movie){
+  ratingsPercent = Math.round(movie.vote_average * 10);
+  ratings = `${ratingsPercent}% Rating`;
+  return ratings;
+}
+
+function createRatingsContainer(ratings){
+  const ratingsContainer = document.createElement('div');
+  ratingsContainer.classList.add('ratings-container');
+
+  const ratingsText = document.createElement('p');
+  ratingsText.textContent = ratings;
+  ratingsContainer.appendChild(ratingsText);
+
+  return ratingsContainer;
+}
+
+function extractSynopsis(movie){
+  synopsis = movie.overview;
+  return synopsis;
+}
+
+function createSynposisContainer(synopsis){
+  const synposisOverlayContainer = document.createElement('div');
+  synposisOverlayContainer.classList.add('synopsis-overlay-container');
+
+  const synopsisText = document.createElement('p');
+  synopsisText.textContent = synopsis;
+  synopsisText.classList.add('synopsis-text');
+  synposisOverlayContainer.appendChild(synopsisText);
+
+  return synposisOverlayContainer;
+}
+
 //await = makes an async function wait for a promise
 //promise = object that links producing code and consuming code
 
@@ -158,20 +212,46 @@ async function makeTitleCard(movie) {
   wrapper.classList.add('wrapper');
 
   //create and add poster
-  const imageTitleContainer = document.querySelector('.image-title-container');
+  const allContainer = document.querySelector('.all-container');
+  
   let posterPath = movie.poster_path;
   let ImgUrl = `http://image.tmdb.org/t/p/w300/${posterPath}` //TODO: add function to do this
   const imageContainer = createImageContainer(ImgUrl);
+
+  //synopsis overlay
+  let synopsis = extractSynopsis(movie);
+  const synopsisContainer = createSynposisContainer(synopsis);
+  imageContainer.appendChild(synopsisContainer);
 
   //title (movie name & year) and id
   let title = titleAll(movie);
   let id = movie.id;
   const titleContainer = createTitleContainer(title);
 
-  addMovietoWatchlist(title, id, wrapper);
+  const mediaRatingWrapper = document.createElement('div');
+  mediaRatingWrapper.classList.add('media-ratings-wrapper');
 
+  //media type 
+  let mediaType = extractMediaType(movie);
+  const mediaTypeContainer = createMediaTypeContainer(mediaType);
+
+  //ratings
+  let ratings = extractRatings(movie);
+  const ratingsContainer = createRatingsContainer(ratings);
+
+  mediaRatingWrapper.appendChild(mediaTypeContainer);
+  mediaRatingWrapper.appendChild(ratingsContainer);
+
+  //adding elements to titlecard wrappers 
   wrapper.appendChild(imageContainer);
   wrapper.appendChild(titleContainer);
+  wrapper.appendChild(mediaRatingWrapper);
+
+  //button to add titles to watchlist 
+  addMovietoWatchlist(title, id, wrapper);
+
+  wrapper.appendChild(document.createElement('hr'));
+  
  
   //provider logos
   try {
@@ -192,7 +272,7 @@ async function makeTitleCard(movie) {
     console.error('Error fetching provider data:', error);
   }
 
-  imageTitleContainer.appendChild(wrapper);
+  allContainer.appendChild(wrapper);
 }
 
 
@@ -320,7 +400,7 @@ function filterButtonsWrapper() {
   const mediaFilter = document.querySelector('.media-type-filter-buttons'); 
 
   const mediaFilterWrapper = document.createElement('div');
-  mediaFilterWrapper.classList.add('wrapper');
+  mediaFilterWrapper.classList.add('filter-wrapper');
 
   const movieButton = document.createElement('button');
   movieButton.classList.add('movie-filter-button');
