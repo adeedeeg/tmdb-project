@@ -47,7 +47,7 @@ function extractMediaType(movie){
   if (movie.media_type === 'movie'){
     return 'Movie';
   }else{
-    return 'Tv Series';
+    return 'TV Series';
   }
 }
 
@@ -65,7 +65,7 @@ function createMediaTypeContainer(mediaType){
 
 function extractRatings(movie){
   ratingsPercent = Math.round(movie.vote_average * 10);
-  ratings = `${ratingsPercent}% Rating`;
+  ratings = `${ratingsPercent}% Rating of`;
   return ratings;
 }
 
@@ -247,11 +247,15 @@ async function makeTitleCard(movie) {
   wrapper.appendChild(titleContainer);
   wrapper.appendChild(mediaRatingWrapper);
 
-  //button to add titles to watchlist 
-  addMovietoWatchlist(title, id, wrapper);
+  const addAndRemoveWrapper = document.createElement('div');
+  addAndRemoveWrapper.classList.add('add-and-remove-button-wrapper');
 
+  //button to add titles to watchlist 
+  addMovietoWatchlist(title, id, addAndRemoveWrapper);
+
+  wrapper.appendChild(addAndRemoveWrapper);
   wrapper.appendChild(document.createElement('hr'));
-  
+
  
   //provider logos
   try {
@@ -310,8 +314,8 @@ function createTitleContainer(title) {
 
 
 //adding title to watchlist when add button is clicked
-function addMovietoWatchlist(title, id, wrapper) {
-  const existingButtons = wrapper.querySelectorAll('button');
+function addMovietoWatchlist(title, id, addAndRemoveWrapper) {
+  const existingButtons = addAndRemoveWrapper.querySelectorAll('button');
   existingButtons.forEach(button => button.remove());
 
   //add button and add to list function
@@ -320,31 +324,31 @@ function addMovietoWatchlist(title, id, wrapper) {
   addToWatchButton.classList.add('add-button');
   addToWatchButton.textContent = 'add';
 
-  wrapper.appendChild(addToWatchButton);
+  addAndRemoveWrapper.appendChild(addToWatchButton);
 
   addToWatchButton.addEventListener('click', () => {
     console.log(`${title} added to your watchlist!`);
-    addMovieToHTMLList(title, id, wrapper);
+    addMovieToHTMLList(title, id, addAndRemoveWrapper);
     //remove add button
     addToWatchButton.remove();
     //add remove button
-    removeButton(title, id, wrapper);
+    removeButton(title, id, addAndRemoveWrapper);
   });
 }
 
 
-function removeButton(title, id, wrapper) {
+function removeButton(title, id, addAndRemoveWrapper) {
   const removeWatchButton = document.createElement('button');
   removeWatchButton.classList.add('material-symbols-outlined');
   removeWatchButton.classList.add('remove-button');
   removeWatchButton.textContent = 'check';
 
-  wrapper.appendChild(removeWatchButton);
+  addAndRemoveWrapper.appendChild(removeWatchButton);
 
   removeWatchButton.addEventListener('click', () => {
     console.log(`${title} removed from your watchlist!`);
     removeWatchButton.remove();
-    resetTitlecard(title, id, wrapper);
+    resetTitlecard(title, id, addAndRemoveWrapper);
   });
 }
 

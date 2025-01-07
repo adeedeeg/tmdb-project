@@ -1,84 +1,91 @@
+html,
+body {
+  overflow: hidden;
+  /* sisable both vertical and horizontal scrolling */
+  height: 100%;
+  /* ensure the page takes the full viewport height */
+}
 
 p {
   margin: 0px;
   border: 0px;
 }
 
-button{
+button {
   padding: 0p
 }
+
+.logo-site {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #F6EFDD;
+  height: 180px;
+  border-bottom: 2px solid #000000;
+}
+
+#logo-site-img {
+  margin-left: 05px;
+  object-position: bottom left;
+  position: fixed;
+  top: 70px;
+  left: 45px;
+}
+
 
 body {
   background-color: #F6EFDD;
 }
-/* 
-.material-symbols-outlined .add-button{
-  color: #EC221F;
-} */
-
-.logo-site {
-  height: 150px;
-  margin-bottom: 0px;
-  position: relative;
-  /* Ensures the #logo-site-img is positioned relative to this container */
-}
-
-#logo-site-img {
-  margin-left: 0;
-  object-position: bottom left;
-  position: absolute;
-  bottom: 10px;
-  left: 45px;
-}
-
-hr.line-under-logo {
-  display: block;
-  /* width: 95%; */
-  /* height: 10px; */
-  /* border: 0; */
-  border-top: 2px solid #000000;
-  margin-top: 0px;
-  margin-left: 40px;
-  margin-right: 40px;
-  /* padding: 30px; */
-}
 
 .sidebar {
-  height: 100%;
+  height: calc(100% - 180px);
   width: 400px;
   position: fixed;
   z-index: 1;
-  top: 172px;
+  top: 180px;
   left: 50px;
   overflow-x: hidden;
-  /* Prevents horizontal overflow */
-  padding-top: 0px;
+  overflow-y: auto; /*sidebar scrollable if content overflows */
+  margin-top: 10px;
+  padding-top: 15px;
   padding-left: 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* Stack content vertically */
   justify-content: top;
-  position: absolute;
+  direction: rtl; /* set direction to right-to-left */
+  text-align: left; /* align text back to the left */
+  /* border-right: 2px solid #000000; */
+
 }
+
+.sidebar-vertical-line {
+  border-left: 2px solid rgb(0, 0, 0);
+  height: calc(100% + 180px);
+  position: fixed;
+  left: 450px;
+  top: 180px;
+}
+
+/* Ensure content flows correctly inside the sidebar */
+.sidebar .watchlist {
+  direction: ltr;
+  /* Set content back to left-to-right for text alignment */
+  text-align: left;
+  /* Align text properly */
+}
+
 
 .sidebar-header {
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: bold;
   font-style: normal;
-  margin-top: 30px;
+  margin-top: 5px;
+  margin-bottom: 28px;
   text-align: center;
   border-bottom: 50px;
-}
-
-.sidebar-vertical-line {
-  border-left: 2px solid rgb(0, 0, 0);
-  height: 100%;
-  position: absolute;
-  /* Position relative to the sidebar */
-  right: 0;
-  top: 0;
 }
 
 ul {
@@ -86,22 +93,22 @@ ul {
   padding: 0 0 0 0px;
 }
 
-li{
-  list-style-type: none; 
-  padding: 10px; 
-  margin: 0; 
-  background-color: #F6EFDD; 
+li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  background-color: #F6EFDD;
   width: 300px;
-  color: #000000; 
-  border: 2px solid #000; 
-  font-family: "Inter", sans-serif; 
-  font-size: 15px; 
+  color: #000000;
+  border: 2px solid #000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
   font-weight: bold;
-  padding: 8px 16px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  box-shadow: 10px 10px 0 #EC221F; 
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 10px 10px 0 #EC221F;
   margin-bottom: 30px;
 }
 
@@ -115,20 +122,35 @@ li{
 }
 
 .display-body {
-  position: top;
+  margin-top: 180px;
   margin-left: 450px;
   padding-left: 40px;
+  padding-left: 20px;
+
+  overflow-y: auto;
+  height: calc(100vh - 200px);/* ensure it is scrollable within the viewport */
 }
 
-
-.body-header {
-  color: white;
-  font-family: "Inter", sans-serif;
+.display-body::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  width: 8px;
 }
 
-#title-card-store{
+.display-body::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+  background: #EC221F;
+  border-radius: 4px;
+}
+
+.display-body::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #EC221F;
+}
+
+#title-card-store {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 10px;
   gap: 25px;
 }
 
@@ -138,8 +160,10 @@ li{
   align-items: center;
   width: 300px;
   padding: 10px;
-  hr{
-    width:100%;
+  direction: rtl;
+
+  hr {
+    width: 100%;
     border-top: 2px solid #000000;
     margin-top: 0px;
   }
@@ -184,56 +208,70 @@ li{
   /* position: relative; */
   margin-top: 0px;
   font-size: 50px;
-  padding-left: 10px;
-  padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 10px;
   border: 0px;
   cursor: pointer;
   background-color: #F6EFDD;
 }
 
 .remove-button {
-  position: relative;
   margin-top: 0px;
-  padding: 0px;
+  font-size: 50px;
+  color: #EC221F;
+  padding-left: 0px;
+  padding-right: 10px;
   border: 0px;
   cursor: pointer;
   background-color: #F6EFDD;
 }
 
-.remove-button:hover {
-  background-color: rgb(255, 255, 255);
-}
 
 .provider-container {
   margin-top: 0px;
   padding-left: 5px;
-  
+  direction: rtl;
 }
 
 .none-provider-container {
   margin-top: 0px;
+  height: 50px;
+  width: 300px;
   font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: normal;
-  text-align: right;
+  font-style: italic;
 }
 
-.synopsis-overlay-container{
+
+.synopsis-overlay-container {
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: normal;
-  text-align: right;
+  direction: ltr;
 }
 
 .search-filter-bar {
+  position: relative;
+  top: 0px;
+  left: 10px;
   display: flex;
-  width: 1339px;
+  width: 1340px;
   height: 50px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
   background-color: #F6EFDD;
   border-bottom: 2px solid #000;
+}
+
+.search-button {
+  font-size: 25px;
+  color: #c4c4c4;
+  padding: 7px;
+  background-color: #ffffff;
+  border-radius: 20px 0 0 20px;
 }
 
 /* Styles for the search bar */
@@ -245,22 +283,37 @@ li{
 
 .search-input {
   flex: 1;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 20px 0 0 20px;
+  padding: 10px 15px 10px 0px;
+  border: none;
+  border-radius: 0px 0 0 0px;
   outline: none;
   font-size: 16px;
-  background-color: #fcf9f5;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.search-input:focus {
+  background-color: white;
+  border-color: #ddd;
+  outline: none;
 }
 
 .search {
-  background: none;
-  border: none;
+  background: #ffffff;
+  border-left: 2px solid #ddd;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
   color: #EC221F;
   font-size: 20px;
   padding: 0 15px;
   border-radius: 0 20px 20px 0;
   cursor: pointer;
+}
+
+.search:active {
+  background-color: #EC221F;
+  color: #ffffff;
 }
 
 /* Media filter buttons wrapper */
@@ -277,11 +330,15 @@ li{
   gap: 0;
 }
 
+.both-filter-button {
+  font-weight: bold;
+  color: red;
+}
+
 .filter-wrapper button {
   padding: 10px 15px;
   border: none;
   background: none;
-  color: #000;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
@@ -292,12 +349,6 @@ li{
 .filter-wrapper button:hover {
   color: #EC221F;
 }
-
-/* Active button style */
-/* .wrapper button.active {
-    color: #EC221F; 
-    font-weight: bold; 
-  } */
 
 /* Divider between buttons */
 .filter-wrapper button:not(:last-child)::after {
@@ -311,7 +362,6 @@ li{
   height: 60%;
   background-color: #000;
 }
-
 
 .synopsis-overlay-container {
   position: absolute;
