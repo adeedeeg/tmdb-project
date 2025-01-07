@@ -1,9 +1,7 @@
 html,
 body {
   overflow: hidden;
-  /* sisable both vertical and horizontal scrolling */
   height: 100%;
-  /* ensure the page takes the full viewport height */
 }
 
 p {
