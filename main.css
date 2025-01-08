@@ -36,6 +36,75 @@ body {
   background-color: #F6EFDD;
 }
 
+.sidebar-log-in{
+  display: flex;
+  align-items: center;
+  direction: ltr;
+  width: 300px;
+  font-family: "Inter", serif;
+  align-items: center;
+}
+
+.log-in-header{
+  font-size: 20px;
+  font-weight: bold;
+  width: 300px;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.username-wrapper, .password-wrapper {
+  display: flex;
+  width: 300px;
+  height: 35px;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  align-items: center;
+}
+
+.username-input, .password-input{
+  border-radius: 18px 18px 18px 18px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.log-sign-button-wrapper{
+  width: 300px;
+  text-align: center;
+}
+
+.log-in-button, .sign-up-button {
+  display: inline-block; 
+  margin: 10px;
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer;
+  height: 35px;
+  width: 110px;
+  background: #ffffff;
+  border: none;
+  color: #EC221F;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0 15px;
+  border-radius: 15px 15px 15px 15px;
+  cursor: pointer;
+}
+
+.log-in-button:active {
+  background-color: #EC221F;
+  color: #ffffff;
+}
+
+.sign-up-button:active {
+  background-color: #EC221F;
+  color: #ffffff;
+}
+
 .sidebar {
   height: calc(100% - 180px);
   width: 400px;
@@ -288,12 +357,6 @@ li {
   font-size: 16px;
   background-color: #ffffff;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.search-input:focus {
-  background-color: white;
-  border-color: #ddd;
-  outline: none;
 }
 
 .search {

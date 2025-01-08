@@ -23,17 +23,36 @@
         </div>
     </div>
     <div class="sidebar">
-        <h1 class="sidebar-header">My Watchlist</h1>
-        <div class="watchlist">
-            <ul id="watchlist-list">
+        <div class="sidebar-log-in">
+            <form id="logInForm" class="log-in" action="" onsubmit="event.preventDefault()">
+                <div class="log-in-header"> Log In for Watchlist</div>
+                <div class="username-wrapper">
+                    <label class="username-label"> Username </label>
+                    <input type="text" class="username-input">
+                </div> 
+                <div class="password-wrapper"> 
+                    <label class="password-label"> Password </label>
+                    <input type="text" class="password-input" style="-webkit-text-security: circle">
+                </div>
+                <div class="log-sign-button-wrapper">
+                    <button class="log-in-button">Log In</button>
+                    <button class="sign-up-button">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div id="sidebar-watchlist">
+            <div class="sidebar-header">My Watchlist</div>
+            <div class="watchlist">
+                <ul id="watchlist-list">
 
-            </ul>
+                </ul>
+            </div>
         </div>
         <div class="sidebar-vertical-line"></div>
     </div>
     <div class="display-body">
         <div class="search-filter-bar">
-            <form class="search-bar" action="" onsubmit="event.preventDefault()">
+            <form id="searchForm" class="search-bar" action="" onsubmit="event.preventDefault()">
                 <span class="material-symbols-outlined search-button"> search </span>
                 <input type="text" class="search-input" aria-label="Search">
                 <button class="search" type="submit">Search</button>
