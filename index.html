@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,check,close,search" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,check,close,search" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,24 +24,27 @@
     </div>
     <div class="sidebar">
         <div class="sidebar-log-in">
-            <form id="logInForm" class="log-in" action="" onsubmit="event.preventDefault()">
-                <div class="log-in-header"> Log In for Watchlist</div>
-                <div class="username-wrapper">
-                    <label class="username-label"> Username </label>
-                    <input type="text" class="username-input">
-                </div> 
-                <div class="password-wrapper"> 
-                    <label class="password-label"> Password </label>
-                    <input type="text" class="password-input" style="-webkit-text-security: circle">
-                </div>
-                <div class="log-sign-button-wrapper">
-                    <button class="log-in-button">Log In</button>
-                    <button class="sign-up-button">Sign Up</button>
-                </div>
-            </form>
+            <button class="login-coll-button" onclick="toggleLoginForm()"> LOGIN TO SAVE YOUR LIST </button>
+            <div id="login-form" class="log-in-content">
+                <form class="log-in" action="" onsubmit="event.preventDefault()">
+                    <div class="username-wrapper">
+                        <label class="username-label"> Username </label>
+                        <input type="text" class="username-input" id="username" required>
+                    </div>
+                    <div class="password-wrapper">
+                        <label class="password-label"> Password </label>
+                        <input type="text" class="password-input" id="passowrd" style="-webkit-text-security: circle"
+                            required>
+                    </div>
+                    <div class="log-sign-button-wrapper">
+                        <button class="log-in-button">LOGIN</button>
+                        <button class="sign-up-button">SIGNUP</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div id="sidebar-watchlist">
-            <div class="sidebar-header">My Watchlist</div>
+            <div class="sidebar-header">MY WATCHLIST</div>
             <div class="watchlist">
                 <ul id="watchlist-list">
 

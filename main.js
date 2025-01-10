@@ -1,19 +1,18 @@
 const searchForm = document.getElementById('searchForm');
 const apiKey = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZDlkMWNmNzVmYjI2ZjljNzQ4Y2JlZjlhOTdiZWVhMyIsIm5iZiI6MTczNDY1NDY5My4zNTYsInN1YiI6IjY3NjRiYWU1MWIwNmM1ZjI4Yjc0ODYyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SgSWhGUA5UcgHWmTj0f5E5wZzgofoNsjmN6sD4MNDoM'
 const watchlistAdd = document.getElementById('watchlist-list');
-// const logInForm = document.getElementById('LogInForm');
 
-// filterButtonsWrapper();
 
-// //log in button pressed
-// logInForm.addEventListener('submit',(l) =>{
-//   l.preventDefault();
+filterButtonsWrapper();
 
-//   const displaySidebar = document.getElementByClassName('sidebar-watchlist');
-//   displaySidebar.innterHTML = 'My Watchlist';
-
-// })
-
+function toggleLoginForm(){
+  const loginContent = document.getElementById('login-form');
+  if (loginContent.style.display === 'none' || loginContent.style.display === '') {
+    loginContent.style.display = 'block';
+  } else {
+    loginContent.style.display = 'none';
+  }
+}
 
 //use input to search api
 searchForm.addEventListener('submit', (e) => {

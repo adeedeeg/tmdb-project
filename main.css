@@ -45,14 +45,33 @@ body {
   align-items: center;
 }
 
-.log-in-header{
-  font-size: 20px;
-  font-weight: bold;
+.sidebar-log-in{
+  display: inline-block;
+}
+
+.login-coll-button{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+  background-color: #ffffff;
   width: 300px;
-  text-align: center;
-  padding-bottom: 20px;
-  margin-bottom: 10px;
-  margin-top: 5px;
+  color: #000000;
+  border: 2px solid #000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 10px 10px 0 #000000;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.log-in-content {
+  display: none; /* Initially hidden */
+  margin-top: 20px;
 }
 
 .username-wrapper, .password-wrapper {
@@ -73,37 +92,34 @@ body {
 }
 
 .log-sign-button-wrapper{
+  display: flex;
+  gap: 50px;
   width: 300px;
+  justify-content: center;
   text-align: center;
+  margin-bottom: 10px;
 }
 
-.log-in-button, .sign-up-button {
-  display: inline-block; 
-  margin: 10px;
-  padding: 10px 20px; 
-  font-size: 16px; 
-  cursor: pointer;
-  height: 35px;
-  width: 110px;
-  background: #ffffff;
-  border: none;
-  color: #EC221F;
+.log-in-button, .sign-up-button{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: #EC221F;
+  width: 80px;
+  color: #ffffff;
+  border: 2px solid #000;
+  font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: bold;
-  padding: 0 15px;
-  border-radius: 15px 15px 15px 15px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 5px 5px 0 #000000;
+  margin-bottom: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
-.log-in-button:active {
-  background-color: #EC221F;
-  color: #ffffff;
-}
-
-.sign-up-button:active {
-  background-color: #EC221F;
-  color: #ffffff;
-}
 
 .sidebar {
   height: calc(100% - 180px);
@@ -145,14 +161,20 @@ body {
 
 
 .sidebar-header {
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+  background-color: #ffffff;
+  width: 300px;
+  color: #000000;
+  border: 2px solid #000;
   font-family: "Inter", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
-  font-style: normal;
-  margin-top: 5px;
-  margin-bottom: 28px;
-  text-align: center;
-  border-bottom: 50px;
+  padding: 8px 16px;
+  display: flex;
+  box-shadow: 10px 10px 0 #000000;
+  margin-bottom: 30px;
 }
 
 ul {
