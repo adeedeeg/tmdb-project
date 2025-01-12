@@ -22,8 +22,13 @@ Build shared watchlists that multiple users can contribute to and enjoy.
 ✅ **Frontend Development:**  
 The initial frontend is fully functional, built in **JavaScript**, and allows users to search for movies and TV series.  
 
-The frontend integrates API calls to TMDb, enabling users to search for movies and TV series directly. Data such as titles, synopsis, posters, and streaming information is fetched in real-time from TMDb.  
-video here  
+The frontend integrates API calls to TMDb, enabling users to search for movies and TV series directly. Data such as titles, synopsis, posters, and streaming information is fetched in real-time from TMDb. Demo below:
+
+
+
+https://github.com/user-attachments/assets/322930b2-29bd-4033-9b69-d6e4b28b0b1a
+
+
 
 ## 🛠️ Next Step: Backend Development  
 The next phase focuses on building a robust backend to handle data storage, user accounts, collaboration features, and seamless integration with the frontend. My plans going forward are as follows:  
